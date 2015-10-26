@@ -1,0 +1,73 @@
+body{
+  background-color:#282C34;
+  color: white;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+header{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  margin: 10px auto 45px auto;
+}
+
+h1{
+  text-align: center;
+}
+
+h2{
+  text-align: left;
+}
+
+.gamearea{
+  width = window.width:
+  background-color: white;
+  overflow: auto;
+}
+
+.gameboard{
+  width: 75%;
+  height: 500px;
+  float: left;
+  background-color: grey;
+  text-align: center;
+  overflow: auto;
+}
+
+.questions{
+  width: 80%;
+  height: 300px;
+  margin: 0px auto 0px auto;
+  background-color: #282C34;
+  color: white;
+}
+.controls{
+  width: 80%;
+  height: 150px;
+  margin: 10px auto 0px auto;
+  background-color: green;
+  text-align: center;
+}
+
+.buttons{
+  height: 50%;
+}
+
+.score{
+  color = #282C34;
+  height: 50%;
+  background-color: black;
+
+}
+
+.legends{
+  width: 25%;
+  height: 500px;
+  float: right;
+  background-color: #F0776E;
+}
+
+
+footer{
+  text-align: center;
+}
