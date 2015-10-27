@@ -68,7 +68,7 @@ var game = {
         this.gamesPlayed++;
         this.whichCard++;
         this.loadCard();
-        $('.score').html(this.answeredCorrect + "/" + this.gamesPlayed + " correct!")
+        $('.score').html(this.answeredCorrect + "/" + this.deckSize + " correct!")
       }.bind(this))
     },
 
