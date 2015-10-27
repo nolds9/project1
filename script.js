@@ -6,7 +6,7 @@ var game = {
     answeredCorrect : 0,
     answeredWrong : 0,
     whichCard : 1,
-    deckSize: 20,
+    deckSize: 5,
 
     //setting decksize below
     // deckSizeFunction : function(obj) {
@@ -26,8 +26,7 @@ var game = {
     loadCard : function(){
 
       if(this.gamesPlayed == this.deckSize){
-        $('#questions').html(this.answeredCorrect + "/" + this.gamesPlayed + " correct!");
-        $('#buttons').html("It is over");
+          this.winningConditions();
       }else{
               var cards = this.allCards["card"+this.whichCard];
               $('#questions').html('<span>' + cards.question + '</span>');
@@ -57,15 +56,30 @@ var game = {
       }.bind(this))
     },
 
-    // objectSize : function(obj) {
-    //   var size = 0, key;
-    //   for (key in obj) {
-    //       if (obj.hasOwnProperty(key)) size++;
-    //   }
-    //   return size;
-    // },
+    winningConditions : function(){
+      if ((game.answeredCorrect/game.deckSize) <= .5){
+        $('#questions').html('<img src="unhappyarnold.jpg">');
+        $('#buttons').html('<h2>' + "It is over, you think that was good enough?" + '</h2>' +
+        '<button id="reset">' + "reset" + '</button>');
+        $('#reset').on('click', function(){this.reset()}.bind(this));
+      }else if (game.answeredCorrect/game.deckSize <= .75){
+        $('#questions').html('<img src="arnoldmedium.jpg">');
+        $('#buttons').html("Good job, but you are still out of shape.  Work harder!");
+      }else{
+        $('#questions').html('<img src="itsover.jpg">');
+        $('#buttons').html("Wow! You are the best!");
+      }
+    },
 
-
+    reset : function(){
+      this.gamesPlayed = 0,
+      this.gamesPlayed = 0,
+      this.answeredCorrect = 0,
+      this.answeredWrong = 0,
+      this.whichCard = 1,
+      this.deckSize= 5,
+      this.playGame();
+    },
 
     allCards : {
   //
@@ -179,6 +193,8 @@ var game = {
 
   },
 }
+
+
 
 game.playGame();
 
