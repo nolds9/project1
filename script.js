@@ -36,7 +36,7 @@ var game = {
               $('#questions').html('<span>' + cards.question + '</span>');
               $('#0').html(cards.option[0]);
               $('#1').html(cards.option[1]);
-              $('#2').html(cards.option[2]);
+              $('#2').html(cards.option[2]);  
               $('#3').html(cards.option[3]);
               $('#4').html(cards.option[4]);
               // put answer in a propery rather than making it a global variable
