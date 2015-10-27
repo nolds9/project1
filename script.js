@@ -5,7 +5,9 @@ var game = {
     answeredCorrect : 0,
     answeredWrong : 0,
     whichCard : 1,
-    deckSize: 5,
+    deckSize: 20,
+    countDown : 60,
+    intervals : "",
 
     //setting decksize below
     // deckSizeFunction : function(obj) {
@@ -23,8 +25,18 @@ var game = {
     },
 
     setTime : function(){
-      setTimeout(this.winningConditions, 10000);
+      setTimeout(this.winningConditions, 61000  );
+      game.intervals = setInterval(function(){
+        game.countDown--;
+        $('.title').html(+ game.countDown);
+      }, 1000);
+
     },
+
+    // timer : function(){
+    //   game.countdown = game.countdown -1;
+    //   $('.title').html(+ game.countDown)
+    // },
 
 
     loadCard : function(){
@@ -56,7 +68,7 @@ var game = {
         this.gamesPlayed++;
         this.whichCard++;
         this.loadCard();
-        $('.score').html(this.answeredCorrect + "/" + this.gamesPlayed + " correct!")
+        $('.score').html(this.answeredCorrect + "/" + this.deckSize + " correct!")
       }.bind(this))
     },
 
@@ -67,7 +79,7 @@ var game = {
       this.answeredCorrect = 0,
       this.answeredWrong = 0,
       this.whichCard = 1,
-      this.deckSize= 5,
+      this.deckSize= 20,
       $('#buttons').html('<button id="0" class="button">'+'</button>'
       +'<button id="1" class="button">'+'</button>'
       +'<button id="2" class="button">'+'</button>'
@@ -81,22 +93,26 @@ var game = {
       var self=game;
       console.log(self);
       if ((game.answeredCorrect/game.deckSize) <= .5){
-        $('#questions').html('<img src="unhappyarnold.jpg">');
+        $('#questions').html('<div class="picture">'+'<img src="unhappyarnold.jpg">'+'<div>');
         $('#buttons').html('<h2>' + "It is over, you think that was good enough?" + '</h2>' +
         '<button id="reset">' + "reset" + '</button>');
-        $('#reset').on('click', function(){
-          console.log(self);
-          self.reset()});
+        $('#reset').on('click', function(){self.reset()});
+        clearInterval(self.intervals);
+        self.countDown = 60;
       }else if (game.answeredCorrect/game.deckSize <= .75){
-        $('#questions').html('<img src="arnoldmedium.jpg">');
+        $('#questions').html('<div class="picture">'+'<img src="arnoldmedium.jpg">'+'<div>');
         $('#buttons').html('<h2>' + "Good job, but you are still out of shape.  Work harder!" + '</h2>' +
         '<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
+        clearInterval(self.intervals);
+        self.countDown = 60;
       }else{
-        $('#questions').html('<img src="itsover.jpg">');
+        $('#questions').html('<div class="picture">'+'<img src="itsover.jpg">'+'<div>');
         $('#buttons').html('<h2>' + "Wow! You are the best!" + '</h2>' +
         '<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
+        clearInterval(self.intervals);
+        self.countDown = 60;
       }
     },
 
