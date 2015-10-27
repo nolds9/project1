@@ -1,5 +1,4 @@
 // $(document).ready(function(){
-
 var game = {
 
     gamesPlayed : 0,
@@ -20,6 +19,11 @@ var game = {
     playGame : function(){
       this.loadCard();
       this.clickAnswer();
+      this.setTime();
+    },
+
+    setTime : function(){
+      setTimeout(this.winningConditions, 10000);
     },
 
 
@@ -56,20 +60,6 @@ var game = {
       }.bind(this))
     },
 
-    winningConditions : function(){
-      if ((game.answeredCorrect/game.deckSize) <= .5){
-        $('#questions').html('<img src="unhappyarnold.jpg">');
-        $('#buttons').html('<h2>' + "It is over, you think that was good enough?" + '</h2>' +
-        '<button id="reset">' + "reset" + '</button>');
-        $('#reset').on('click', function(){this.reset()}.bind(this));
-      }else if (game.answeredCorrect/game.deckSize <= .75){
-        $('#questions').html('<img src="arnoldmedium.jpg">');
-        $('#buttons').html("Good job, but you are still out of shape.  Work harder!");
-      }else{
-        $('#questions').html('<img src="itsover.jpg">');
-        $('#buttons').html("Wow! You are the best!");
-      }
-    },
 
     reset : function(){
       this.gamesPlayed = 0,
@@ -78,8 +68,39 @@ var game = {
       this.answeredWrong = 0,
       this.whichCard = 1,
       this.deckSize= 5,
+      $('#buttons').html('<button id="0" class="button">'+'</button>'
+      +'<button id="1" class="button">'+'</button>'
+      +'<button id="2" class="button">'+'</button>'
+      +'<button id="3" class="button">'+'</button>'
+      +'<button id="4" class="button">'+'</button>')
       this.playGame();
+      $('.score').html("What will you score?")
     },
+
+    winningConditions : function(){
+      var self=game;
+      console.log(self);
+      if ((game.answeredCorrect/game.deckSize) <= .5){
+        $('#questions').html('<img src="unhappyarnold.jpg">');
+        $('#buttons').html('<h2>' + "It is over, you think that was good enough?" + '</h2>' +
+        '<button id="reset">' + "reset" + '</button>');
+        $('#reset').on('click', function(){
+          console.log(self);
+          self.reset()});
+      }else if (game.answeredCorrect/game.deckSize <= .75){
+        $('#questions').html('<img src="arnoldmedium.jpg">');
+        $('#buttons').html('<h2>' + "Good job, but you are still out of shape.  Work harder!" + '</h2>' +
+        '<button id="reset">' + "reset" + '</button>');
+        $('#reset').on('click', function(){self.reset()});
+      }else{
+        $('#questions').html('<img src="itsover.jpg">');
+        $('#buttons').html('<h2>' + "Wow! You are the best!" + '</h2>' +
+        '<button id="reset">' + "reset" + '</button>');
+        $('#reset').on('click', function(){self.reset()});
+      }
+    },
+
+
 
     allCards : {
   //
@@ -195,7 +216,9 @@ var game = {
 }
 
 
-
-game.playGame();
+$('#startgame').on('click', function(){
+  game.playGame();
+});
+// game.playGame();
 
 // });
