@@ -7,14 +7,15 @@ body{
 }
 
 .page{
-  height: 100%;
+  height: 750px;
   width: 100%;
+  text-align: center;
 }
 
 .header{
   background-color: #72C5AE;
   position: relative;
-  max-height: 20%;
+  min-height: 8%;
   width: 100%;
   text-align: center;
   border: solid 2px;
@@ -22,7 +23,42 @@ body{
   margin-top: -22px;
 }
 
-.gamearea{
+.questions{
+  position: relative;
+  width: 100%;
+  min-height: 50%;
+  vertical-align: center;
+  font-size: 42px;
+  background-color: #F2EDD6;
+  color: black;
+}
+
+.buttons{
+  background-color: #D61D1E;
+  position: relative;
+  min-height: 4%;
+  text-align: center;
+}
+
+.score{
+  min-height: 10%;
+  background-color: #9CAA8C;
+  border: solid 2px;
+}
+.footer{
+  background-color: #72C5AE;
+  position: relative;
+  min-height: 10%;
+  max-height:10%
+  width: 100%;
+  border: solid 2px;
+  color: black;
+  font-size: 32px;
+  text-align: center;
+}
+
+
+/*.gamearea{
   position:relative;
   max-height: 60%;
   width: 100%;
@@ -36,32 +72,9 @@ body{
   background-color: #F2EDD6;
   text-align: center;
   overflow: auto;
-}
+}*/
 
-.footer{
-  background-color: #72C5AE;
-  position: relative;
-  max-height: 20%;
-  width: 100%;
-  border: solid 2px;
-  color: black;
-  font-size: 32px;
-  text-align: center;
-}
-
-
-
-.questions{
-  position: relative;
-  width: 100%;
-  max-height: 75%;
-  min-height: 75%
-  vertical-align: center;
-  font-size: 42px;
-  background-color: #F2EDD6;
-  color: black;
-}
-.controls{
+/*.controls{
   border: solid 2px;
   position:fixed;
   color:black;
@@ -70,12 +83,7 @@ body{
   height: 25%;
   background-color: #ADD31E;
   text-align: center;
-}
-
-.buttons:{
-  position: relative;
-  height: 50%;
-}
+}*/
 
 .button{
   font-size: 24px;
@@ -85,16 +93,11 @@ body{
   font-size: 24px;
 }
 
-.info{
+/*.info{
   position: relative;
   height:50%;
-}
+}*/
 
-.score{
-  height: 100%;
-  background-color: #9CAA8C;
-  border: solid 2px;
-}
 
 #startgame{
   font-size: 42px;
@@ -109,6 +112,10 @@ h2{
   text-align: center;
 }
 
+h4{
+  margin: 0px;
+}
+
 span{
   position: absolute;
   top: 20 %;
@@ -117,7 +124,7 @@ span{
 }
 
 img{
-  max-height: 50%;
+  max-height: 350px;
 }
 
 .picture{

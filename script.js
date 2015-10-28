@@ -86,30 +86,27 @@ var game = {
       +'<button id="3" class="button">'+'</button>'
       +'<button id="4" class="button">'+'</button>')
       this.playGame();
-      $('.score').html("What will you score?")
+      $('.score').html('<h2>'+ "What will you score be?" + '</h2>')
     },
 
     winningConditions : function(){
       var self=game;
       console.log(self);
       if ((game.answeredCorrect/game.deckSize) <= .5){
-        $('#questions').html('<div class="picture">'+'<img src="unhappyarnold.jpg">'+'<div>');
-        $('#buttons').html('<h2>' + "It is over, you think that was good enough?" + '</h2>' +
-        '<button id="reset">' + "reset" + '</button>');
+        $('#questions').html('<div class="picture">'+'<img src="unhappyarnold.jpg">'+'<div>' + '<h4>' + "It is over, you think that was good enough?" + '</h4>');
+        $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
         self.countDown = 60;
       }else if (game.answeredCorrect/game.deckSize <= .75){
-        $('#questions').html('<div class="picture">'+'<img src="arnoldmedium.jpg">'+'<div>');
-        $('#buttons').html('<h2>' + "Good job, but you are still out of shape.  Work harder!" + '</h2>' +
-        '<button id="reset">' + "reset" + '</button>');
+        $('#questions').html('<div class="picture">'+'<img src="arnoldmedium.jpg">'+'<div>'+ '<h4>' + "Good job, but you are still out of shape.  Work harder!" + '</h4>');
+        $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
         self.countDown = 60;
       }else{
-        $('#questions').html('<div class="picture">'+'<img src="itsover.jpg">'+'<div>');
-        $('#buttons').html('<h2>' + "Wow! You are the best!" + '</h2>' +
-        '<button id="reset">' + "reset" + '</button>');
+        $('#questions').html('<div class="picture">'+'<img src="itsover.jpg">'+'<div>'+ '<h4>' + "Wow! You are the best!" + '</h4>');
+        $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
         self.countDown = 60;
