@@ -6,17 +6,9 @@ var game = {
     answeredWrong : 0,
     whichCard : 1,
     deckSize: 20,
-    countDown : 60,
+    countDown : 91,
     intervals : "",
-
-    //setting decksize below
-    // deckSizeFunction : function(obj) {
-    //   var size = 0, key;
-    //   for (key in obj) {
-    //       if (obj.hasOwnProperty(key)) size++;
-    //   }
-    //   return size;
-    // },
+    timeoutId: "",
 
     playGame : function(){
       this.loadCard();
@@ -25,19 +17,15 @@ var game = {
     },
 
     setTime : function(){
-      setTimeout(this.winningConditions, 61000  );
-      game.intervals = setInterval(function(){
+      this.timeoutId = setTimeout(function(){
+        game.winningConditions();
+      },92000  );
+      this.intervals = setInterval(function(){
         game.countDown--;
-        $('.title').html(+ game.countDown);
+        $('.title').html(game.countDown);
       }, 1000);
 
     },
-
-    // timer : function(){
-    //   game.countdown = game.countdown -1;
-    //   $('.title').html(+ game.countDown)
-    // },
-
 
     loadCard : function(){
 
@@ -68,7 +56,9 @@ var game = {
         this.gamesPlayed++;
         this.whichCard++;
         this.loadCard();
-        $('.score').html('<h2>' + this.answeredCorrect + "/" + this.deckSize + " correct!" + '</h2>')
+        // $('.score').html('<h2>' + this.answeredCorrect + "/" + this.deckSize + " correct!" + '</h2>')
+        $('.score').html('<h2>' + this.answeredCorrect + "/" + this.deckSize +" Correct" + "!     " + this.answeredWrong + "/"
+        + this.deckSize +" Wrong"+ "!     " + ((this.deckSize + 1) - this.whichCard)+ " cards remaining!" + '</h2>')
       }.bind(this))
     },
 
@@ -80,36 +70,44 @@ var game = {
       this.answeredWrong = 0,
       this.whichCard = 1,
       this.deckSize= 20,
-      $('#buttons').html('<button id="0" class="button">'+'</button>'
-      +'<button id="1" class="button">'+'</button>'
-      +'<button id="2" class="button">'+'</button>'
-      +'<button id="3" class="button">'+'</button>'
-      +'<button id="4" class="button">'+'</button>')
-      this.playGame();
+      this.countDown = 91;
+      $('#buttons').html('<button id="0" class="button">'+"A"+'</button>'
+      +'<button id="1" class="button">'+"B"+'</button>'
+      +'<button id="2" class="button">'+"C" +'</button>'
+      +'<button id="3" class="button">'+"D" +'</button>'
+      +'<button id="4" class="button">'+"E" +'</button>')
+      // this.playGame();
       $('.score').html('<h2>'+ "What will you score be?" + '</h2>')
+      $('.title').html('<h1 class="title">' + "Trivia: Answer right, get a surprise!" + '</h1>')
+      $('#questions').html('<button id="startgame">' + "Start Game" + '</button>')
+      $('#startgame').on('click', function(){
+        game.playGame();
+      });
     },
+
+
 
     winningConditions : function(){
       var self=game;
       console.log(self);
-      if ((game.answeredCorrect/game.deckSize) <= .5){
-        $('#questions').html('<div class="picture">'+'<img src="unhappyarnold.jpg">'+'<div>' + '<h4>' + "It is over, you think that was good enough?" + '</h4>');
+      if ((game.answeredCorrect/game.deckSize) <= .25){
+        $('#questions').html('<div class="picture">'+'<img src="images/unhappyarnold.jpg">'+'<div>' + '<h4>' + "It is over, you think that was good enough?" + '</h4>');
         $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
-        self.countDown = 60;
+        clearTimeout(self.timeoutId);
       }else if (game.answeredCorrect/game.deckSize <= .75){
-        $('#questions').html('<div class="picture">'+'<img src="arnoldmedium.jpg">'+'<div>'+ '<h4>' + "Good job, but you are still out of shape.  Work harder!" + '</h4>');
+        $('#questions').html('<div class="picture">'+'<img src="images/arnoldmedium.jpg">'+'<div>'+ '<h4>' + "Good job, but you are still out of shape.  Work harder!" + '</h4>');
         $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
-        self.countDown = 60;
+        clearTimeout(self.timeoutId);
       }else{
-        $('#questions').html('<div class="picture">'+'<img src="itsover.jpg">'+'<div>'+ '<h4>' + "Wow! You are the best!" + '</h4>');
+        $('#questions').html('<div class="picture">'+'<img src="images/itsover.jpg">'+'<div>'+ '<h4>' + "Wow! You are the best!" + '</h4>');
         $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
-        self.countDown = 60;
+        clearTimeout(self.timeoutId);
       }
     },
 
@@ -131,13 +129,13 @@ var game = {
       },
 
       card3 : {
-        question: "What is with this course?",
+        question: "What is the true purpose of this course?",
         answer : "Learning to learn",
-        option : ["Insanity", "Triginometry", "Start of human extinction", "Learning to learn", "No correct answer"],
+        option : ["To tigger psychotic episodes", "Triginometry", "The beginning human extinction", "Learning to learn", "No correct answer"],
       },
 
       card4 : {
-        question: "Hurry ,Capital of Canada, what is it?",
+        question: "What is the Captial of Canada?",
         answer : "Ottawa",
         option : ["Toronto", "Quebec", "Vancouver", "Ottawa", "Washington DC"],
       },
@@ -151,7 +149,7 @@ var game = {
       card6 : {
         question: "What was the first day of Autum in 2015?",
         answer : "September 23rd",
-        option : ["September 15th", "August 5th", "September 27th", "August 13th", "September 23rd"],
+        option : ["July 15th", "August 5th", "November 27th", "August 1st", "September 23rd"],
       },
       card7 : {
         question: "What is a Honey Badger's favorite food?",
@@ -160,7 +158,7 @@ var game = {
       },
       card8 : {
         question: "Who played Sirius Black in the Harry Potter feature film franchise?",
-        answer : "Lemongrab",
+        answer : "Gary Oldman",
         option : ["Jude Law", "Elijah Wood", "Benedict Cumberbatch", "Gary Oldman", "Steve Buscemi"],
       },
       card9 : {
@@ -179,9 +177,9 @@ var game = {
         option : ["No one knows", "Spaghettification", "You attain Nirvana", "Immediate death", "Alien contact"],
       },
       card12 : {
-        question: "Out of the options below, who is the hottest President of the United States of America?",
-        answer : "Slick Willy",
-        option : ["W", "Slick Willy", "Calivn Coolidge", "Vladamir Putin", "Obama for 2016"],
+        question: "In the popular animation series Adventure Time, what is the name of the cranky despot styled after a Lemon?",
+        answer : "Lemongrab",
+        option : ["Lemongarp", "Princess Bubblegum", "Jake", "Lemongrab", "Finn"],
       },
       card13 : {
         question: "Why do cats blink slowly at you?",
@@ -201,7 +199,7 @@ var game = {
       card16 : {
         question: "Velociraptor takes you by surprise, you say:",
         answer : "Clever girl",
-        option : ["&!@#", "....", "Ellie, the doorlocks!", "Clever girl", "Must go faster"],
+        option : ["&!@#", "Well, that's it.", "Ellie, the doorlocks!", "Clever girl", "Must go faster"],
       },
       card17 : {
         question: "What color is #FF0000",
@@ -221,9 +219,17 @@ var game = {
       card20 : {
         question: "Where is the highest swamp in the world?",
         answer : "Kauai, Hawaii",
-        option : ["Kauai, Hawaii", "Mordor", "England", "Colombia", "Colorado"],
+        option : ["Kauai, Hawaii", "Mordor", "England", "Washington DC", "Arizona"],
       },
 
+      //setting decksize below
+      // deckSizeFunction : function(obj) {
+      //   var size = 0, key;
+      //   for (key in obj) {
+      //       if (obj.hasOwnProperty(key)) size++;
+      //   }
+      //   return size;
+      // },
 
   },
 }
