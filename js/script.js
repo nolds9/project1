@@ -8,7 +8,8 @@ var game = {
     deckSize: 20,
     countDown : 91,
     intervals : "",
-    timeoutId: "",
+    timeoutId : "",
+    playerName : "",
 
     playGame : function(){
       this.loadCard();
@@ -79,8 +80,9 @@ var game = {
       // this.playGame();
       $('.score').html('<h2>'+ "What will you score be?" + '</h2>')
       $('.title').html('<h1 class="title">' + "Trivia: Answer right, get a surprise!" + '</h1>')
-      $('#questions').html('<button id="startgame">' + "Start Game" + '</button>')
+      $('#questions').html('<h4>' + "Enter Your Name and Click Start Game to Begin:" + '</h4>'+'<input type="text" name="FirstName" placeholder="Arnold" id="inputBox">' +'<button id="startgame">' + "Start Game" + '</button>');
       $('#startgame').on('click', function(){
+        game.playerName = $('#inputBox').val();
         game.playGame();
       });
     },
@@ -91,19 +93,19 @@ var game = {
       var self=game;
       console.log(self);
       if ((game.answeredCorrect/game.deckSize) <= .25){
-        $('#questions').html('<div class="picture">'+'<img src="images/unhappyarnold.jpg">'+'<div>' + '<h4>' + "It is over, you think that was good enough?" + '</h4>');
+        $('#questions').html('<div class="picture">'+'<img src="images/unhappyarnold.jpg">'+'<div>' + '<h4>' + this.playerName + ", it is over, you think that was good enough?" + '</h4>');
         $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
         clearTimeout(self.timeoutId);
       }else if (game.answeredCorrect/game.deckSize <= .75){
-        $('#questions').html('<div class="picture">'+'<img src="images/arnoldmedium.jpg">'+'<div>'+ '<h4>' + "Good job, but you are still out of shape.  Work harder!" + '</h4>');
+        $('#questions').html('<div class="picture">'+'<img src="images/arnoldmedium.jpg">'+'<div>'+ '<h4>' + "Good job " + this.playerName + ", but you are still out of shape.  Work harder!" + '</h4>');
         $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
         clearTimeout(self.timeoutId);
       }else{
-        $('#questions').html('<div class="picture">'+'<img src="images/itsover.jpg">'+'<div>'+ '<h4>' + "Wow! You are the best!" + '</h4>');
+        $('#questions').html('<div class="picture">'+'<img src="images/itsover.jpg">'+'<div>'+ '<h4>' + "Wow! " + this.playerName + ", you are the best!" + '</h4>');
         $('#buttons').html('<button id="reset">' + "reset" + '</button>');
         $('#reset').on('click', function(){self.reset()});
         clearInterval(self.intervals);
@@ -236,8 +238,9 @@ var game = {
 
 
 $('#startgame').on('click', function(){
+  game.playerName = $('#inputBox').val();
   game.playGame();
 });
-// game.playGame();
+
 
 // });
