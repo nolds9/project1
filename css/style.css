@@ -1,18 +1,17 @@
-body{
-  background-color:#282C34;
-  width : 100%;
-  height: 100%
+/* NHO: Make sure to throw your code in a validator to check for syntax, bugs, etc: https://jigsaw.w3.org/css-validator/validator */
+body {
+  background-color: #282C34;
+  width: 100%;
+  height: 100%;
   color: white;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
-
-.page{
+.page {
   height: 750px;
   width: 100%;
   text-align: center;
 }
-
-.header{
+.header {
   background-color: #72C5AE;
   position: relative;
   min-height: 8%;
@@ -22,34 +21,31 @@ body{
   color: black;
   margin-top: -22px;
 }
-
-.questions{
+.questions {
   position: relative;
   width: 100%;
   min-height: 50%;
-  vertical-align: center;
+  /* vertical-align: center; NHO: Just a note, validator says center is not a value for the vertical-align property */
   font-size: 42px;
   background-color: #F2EDD6;
   color: black;
 }
-
-.buttons{
+.buttons {
   background-color: #D61D1E;
   position: relative;
   min-height: 4%;
   text-align: center;
 }
-
-.score{
+.score {
   min-height: 10%;
   background-color: #9CAA8C;
   border: solid 2px;
 }
-.footer{
+.footer {
   background-color: #72C5AE;
   position: relative;
   min-height: 10%;
-  max-height:10%
+  max-height: 10%;
   width: 100%;
   border: solid 2px;
   color: black;
@@ -57,85 +53,43 @@ body{
   text-align: center;
 }
 
+/* NHO: Make sure to remove commented out / unused code */
 
-/*.gamearea{
-  position:relative;
-  max-height: 60%;
-  width: 100%;
-  background-color: white;
-  overflow: auto;
+.button {
+  font-size: 24px;
 }
-.gameboard{
-  position: relative;
-  width: 100%;
-  height: 500px;
-  background-color: #F2EDD6;
-  text-align: center;
-  overflow: auto;
-}*/
-
-/*.controls{
-  border: solid 2px;
-  position:fixed;
-  color:black;
-  top: 440px;
-  width: 100%;
-  height: 25%;
-  background-color: #ADD31E;
-  text-align: center;
-}*/
-
-.button{
+#reset {
   font-size: 24px;
 }
 
-#reset{
-  font-size: 24px;
-}
-
-/*.info{
-  position: relative;
-  height:50%;
-}*/
-
-
-#startgame{
+#startgame {
   font-size: 42px;
 }
-
-
-h1{
+h1 {
   font-size: 32px;
   text-align: center;
 }
-
-h2{
+h2 {
   text-align: center;
 }
-
-h4{
+h4 {
   margin: 0px;
 }
-
-span{
+span {
   position: absolute;
-  top: 20 %;
+  top: 20%;
   left: 50%;
-  transform:translate(-50%);
+  transform: translate(-50%);
 }
-
-img{
+img {
   max-height: 350px;
 }
-
-.picture{
+.picture {
   max-height: 100%;
 }
-
-.timer{
+.timer {
   background-color: #9CAA8C;
 }
-
-#inputBox{
+#inputBox {
   font-size: 42px;
 }

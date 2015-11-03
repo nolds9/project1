@@ -1,47 +1,45 @@
+<!-- NHO: Make sure our HTML validates, you can through it into: https://validator.w3.org/nu/#textarea -->
+<!-- NHO: Code was formatted using Atom's beautify package -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <link type="text/css" href="css/normalize.css">
-    <script src="js/jquery-2.1.4.js"></script>
-    <title>Trivia Time!</title>
-  </head>
-  <body>
-    <div class="page">
-      <div class="header">
-        <h1 class="title">Trivia: Answer right, get a surprise!</h1>
-      </div>
-      <!-- <div class="gamearea" id="gamearea">
-        <div class="gameboard" id="gameboard"> -->
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script src="js/jquery-2.1.4.js"></script>
+  <title>Trivia Time!</title>
+</head>
 
-            <div class="questions" id="questions">
-              <h4>Enter Your Name and Click Start Game to Begin:</h4><input type="text" name="FirstName" placeholder="Arnold" id="inputBox">
-              <button id="startgame">Start Game</button>
-            </div>
-            <!-- <div class="controls" id="controls"> -->
-
-              <div class="buttons" id="buttons">
-                <button id="0" class="button">A</button>
-                <button id="1" class="button">B</button>
-                <button id="2" class="button">C</button>
-                <button id="3" class="button">D</button>
-                <Button id="4" class="button">E</Button>
-              </div>
-              <!-- <div class="info" id="info"> -->
-                <div class="score" id="score">
-                <h2>What will you score be?</h2>
-                </div>
-              <!-- </div> -->
-            <!-- </div> -->
-        <!-- </div> -->
-      <!-- </div> -->
-      <div class="footer">
-        <p> Project 1 - EJS</p>
-      </div>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1 class="title">Trivia: Answer right, get a surprise!</h1>
     </div>
-    <script src="js/script.js"></script>
-  </body>
+    <!-- NHO: Remember to remove unused / commented out code -->
+    <div class="questions" id="questions">
+      <h4>Enter Your Name and Click Start Game to Begin:</h4>
+      <input type="text" name="FirstName" placeholder="Arnold" id="inputBox">
+      <button id="startgame">Start Game</button>
+    </div>
+
+    <div class="buttons" id="buttons">
+      <button id="0" class="button">A</button>
+      <button id="1" class="button">B</button>
+      <button id="2" class="button">C</button>
+      <button id="3" class="button">D</button>
+      <Button id="4" class="button">E</Button>
+    </div>
+    <div class="score" id="score">
+      <h2>What will you score be?</h2>
+    </div>
+    <!-- NHO: Make sure our HTML is indented properly to increase code readability  -->
+    <div class="footer">
+      <p> Project 1 - EJS</p>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
 </html>
